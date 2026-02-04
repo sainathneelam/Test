@@ -42,13 +42,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8f0f0; /* optional, shows if image doesn't fill */
+  background: #f8f0f0; /* shows if image doesn't fill completely */
 }
 
 .slideshow img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* shows full face without cropping */
+  object-fit: contain; /* prevents cutting off faces */
   display: none;
 }
 
@@ -74,11 +74,9 @@ h1 {
   to {transform: translateY(-10vh); opacity: 0;}
 }
 
-/* Audio controls styling */
-audio {
-  margin-top: 20px;
-  outline: none;
-  border-radius: 10px;
+/* Hidden audio */
+#audioPlayer {
+  display: none; /* hides audio controls */
 }
 </style>
 </head>
@@ -93,15 +91,15 @@ audio {
   <!-- Slideshow -->
   <div class="slideshow">
     <img src="0B0A9217.JPG" class="active">
-    <!-- Add more images here -->
+    <!-- Add more images here if needed -->
   </div>
-
-  <!-- Background music from local MP3 -->
-  <audio id="bgMusic" controls autoplay loop>
-    <source src="Nuvvunte Chaley - Lyrical Andhra King Taluka Ram Pothineni Bhagyashri Borse Mahesh Babu P.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 </div>
+
+<!-- Background music from local MP3 -->
+<audio id="audioPlayer" autoplay loop>
+  <source src="Nuvvunte Chaley - Lyrical Andhra King Taluka Ram Pothineni Bhagyashri Borse Mahesh Babu P.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 <script>
 /* Slideshow */
@@ -124,6 +122,12 @@ function createHeart() {
   setTimeout(() => heart.remove(), 6000);
 }
 setInterval(createHeart, 400);
+
+/* Attempt to play music (in case autoplay is blocked) */
+const audio = document.getElementById("audioPlayer");
+audio.play().catch(() => {
+  console.log("Autoplay blocked — user interaction needed to start music");
+});
 </script>
 
 </body>
