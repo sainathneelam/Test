@@ -48,7 +48,7 @@ h1 {
 .slideshow img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* ensures full face visible */
   display: none;
 }
 
@@ -61,6 +61,7 @@ h1 {
   to {opacity: 1; transform: scale(1);}
 }
 
+/* Floating hearts */
 .heart {
   position: absolute;
   color: rgba(255,0,80,0.7);
@@ -73,10 +74,11 @@ h1 {
   to {transform: translateY(-10vh); opacity: 0;}
 }
 
+/* Play button styling */
 button {
   margin-top: 15px;
-  padding: 8px 15px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 12px;
   border: none;
   background: #e63946;
   color: white;
@@ -99,7 +101,7 @@ button {
     <!-- Add more images here -->
   </div>
 
-  <!-- Play music button -->
+  <!-- Play Music Button -->
   <button onclick="playMusic()">🎵 Play Music</button>
 
   <!-- Audio element -->
