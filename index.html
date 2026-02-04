@@ -42,13 +42,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f8f0f0; /* shows if image doesn't fill completely */
+  background: #f8f0f0;
 }
 
 .slideshow img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* prevents cutting off faces */
+  object-fit: contain;
   display: none;
 }
 
@@ -61,7 +61,6 @@ h1 {
   to {opacity: 1; transform: scale(1);}
 }
 
-/* Floating hearts */
 .heart {
   position: absolute;
   color: rgba(255,0,80,0.7);
@@ -74,9 +73,15 @@ h1 {
   to {transform: translateY(-10vh); opacity: 0;}
 }
 
-/* Hidden audio */
-#audioPlayer {
-  display: none; /* hides audio controls */
+button {
+  margin-top: 15px;
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: none;
+  background: #e63946;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -91,15 +96,18 @@ h1 {
   <!-- Slideshow -->
   <div class="slideshow">
     <img src="0B0A9217.JPG" class="active">
-    <!-- Add more images here if needed -->
+    <!-- Add more images here -->
   </div>
-</div>
 
-<!-- Background music from local MP3 -->
-<audio id="audioPlayer" autoplay loop>
-  <source src="Nuvvunte Chaley - Lyrical Andhra King Taluka Ram Pothineni Bhagyashri Borse Mahesh Babu P.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  <!-- Play music button -->
+  <button onclick="playMusic()">🎵 Play Music</button>
+
+  <!-- Audio element -->
+  <audio id="bgMusic" loop>
+    <source src="Nuvvunte Chaley - Lyrical Andhra King Taluka Ram Pothineni Bhagyashri Borse Mahesh Babu P.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
 
 <script>
 /* Slideshow */
@@ -123,11 +131,11 @@ function createHeart() {
 }
 setInterval(createHeart, 400);
 
-/* Attempt to play music (in case autoplay is blocked) */
-const audio = document.getElementById("audioPlayer");
-audio.play().catch(() => {
-  console.log("Autoplay blocked — user interaction needed to start music");
-});
+/* Play music function */
+function playMusic() {
+  const audio = document.getElementById("bgMusic");
+  audio.play();
+}
 </script>
 
 </body>
