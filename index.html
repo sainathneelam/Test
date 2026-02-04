@@ -37,7 +37,7 @@ h1 {
   height: 200px;
   border-radius: 15px;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
 .slideshow img {
@@ -55,7 +55,7 @@ button#playMusic {
   background-color: #e63946;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
@@ -91,9 +91,9 @@ button#playMusic:hover {
 <!-- Play Music Button -->
 <button id="playMusic">🎵 Play Music</button>
 
-<!-- Music iframe (hidden initially) -->
-<iframe id="musicFrame" width="300" height="80"
-src="https://www.youtube.com/embed/s9NBDKfVg1c?loop=1&playlist=s9NBDKfVg1c"
+<!-- Hidden YouTube iframe for audio only -->
+<iframe id="musicFrame" width="0" height="0"
+src="https://www.youtube.com/embed/s9NBDKfVg1c?autoplay=1&loop=1&playlist=s9NBDKfVg1c&controls=0&modestbranding=1"
 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
 
 <div class="card">
@@ -134,8 +134,8 @@ setInterval(createHeart, 400);
 
 /* Play YouTube music when button clicked */
 document.getElementById("playMusic").addEventListener("click", () => {
-  const frame = document.getElementById("musicFrame");
-  frame.style.display = "block";
+  document.getElementById("musicFrame").style.display = "block"; // start music
+  document.getElementById("playMusic").style.display = "none";   // hide button
 });
 </script>
 
