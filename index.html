@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 2;
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  color: #e63946;
+  margin: 10px 0;
+}
+
+.slideshow {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+.slideshow img.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: rgba(255,0,80,0.7);
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  from {transform: translateY(100vh); opacity: 1;}
+  to {transform: translateY(-10vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background music -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+  <!-- 📸 SLIDESHOW IMAGES -->
+  <div class="slideshow">
+    <img src="PASTE_IMAGE_LINK_1" class="active">
+    <img src="PASTE_IMAGE_LINK_2">
+    <img src="PASTE_IMAGE_LINK_3">
+    <!-- add more <img> lines if needed -->
+  </div>
+
+  <h1>I love you ❤️</h1>
+  <p>Forever & always</p>
+  <p>— Sainath</p>
+</div>
+
+<script>
+/* Slideshow */
+let slides = document.querySelectorAll(".slideshow img");
+let index = 0;
+
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}, 3000);
+
+/* Floating hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
