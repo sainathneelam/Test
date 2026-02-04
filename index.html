@@ -56,7 +56,6 @@ h1 {
   to {opacity: 1; transform: scale(1);}
 }
 
-/* Floating hearts */
 .heart {
   position: absolute;
   color: rgba(255,0,80,0.7);
@@ -78,20 +77,19 @@ h1 {
   <p>Forever & always</p>
   <p>— Sainath</p>
 
-  <!-- Slideshow -->
   <div class="slideshow">
-    <img src="https://drive.google.com/uc?export=view&id=1niGOgnRaHe3BmXjGX6Wgnzu6Ov4mosVu" class="active">
-    <!-- Add more images later here -->
+    <!-- Image is in the same folder as index.html -->
+    <img src="0B0A9217.JPG" class="active">
+    <!-- Add more images here -->
   </div>
 </div>
 
-<!-- Hidden YouTube iframe for background music -->
+<!-- Hidden YouTube music -->
 <iframe id="musicFrame" width="0" height="0"
 src="https://www.youtube.com/embed/s9NBDKfVg1c?autoplay=1&loop=1&playlist=s9NBDKfVg1c&controls=0&modestbranding=1"
 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
 
 <script>
-/* Slideshow */
 let slides = document.querySelectorAll(".slideshow img");
 let index = 0;
 setInterval(() => {
@@ -100,7 +98,6 @@ setInterval(() => {
   slides[index].classList.add("active");
 }, 3000);
 
-/* Floating hearts */
 function createHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
