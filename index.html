@@ -55,9 +55,10 @@ button#playMusic {
   background-color: #e63946;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
@@ -87,27 +88,27 @@ button#playMusic:hover {
 
 <body>
 
+<!-- Play Music Button -->
+<button id="playMusic">🎵 Play Music</button>
+
+<!-- Music iframe (hidden initially) -->
+<iframe id="musicFrame" width="300" height="80"
+src="https://www.youtube.com/embed/s9NBDKfVg1c?loop=1&playlist=s9NBDKfVg1c"
+frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
+
 <div class="card">
   <h1>I love you bujjulu ❤️</h1>
   <p>Forever & always</p>
   <p>— Sainath</p>
-
-  <!-- Play music button -->
-  <button id="playMusic">🎵 Play Music</button>
 
   <!-- Slideshow -->
   <div class="slideshow">
     <img src="images/photo1.jpg" class="active">
     <img src="images/photo2.jpg">
     <img src="images/photo3.jpg">
-    <!-- Add more images if you want -->
+    <!-- Add more images here -->
   </div>
 </div>
-
-<!-- YouTube Music iframe (hidden, plays when button clicked) -->
-<iframe id="musicFrame" width="0" height="0"
-src="https://youtu.be/s9NBDKfVg1c?si=Ih6zK9LaWYMcgeVF"
-frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
 
 <script>
 /* Slideshow */
@@ -127,14 +128,14 @@ function createHeart() {
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = Math.random() * 20 + 15 + "px";
   document.body.appendChild(heart);
-
   setTimeout(() => heart.remove(), 6000);
 }
 setInterval(createHeart, 400);
 
 /* Play YouTube music when button clicked */
 document.getElementById("playMusic").addEventListener("click", () => {
-  document.getElementById("musicFrame").style.display = "block";
+  const frame = document.getElementById("musicFrame");
+  frame.style.display = "block";
 });
 </script>
 
