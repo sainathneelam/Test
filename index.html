@@ -48,7 +48,7 @@ h1 {
 .slideshow img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* ensures full face visible */
+  object-fit: contain;
   display: none;
 }
 
@@ -61,7 +61,6 @@ h1 {
   to {opacity: 1; transform: scale(1);}
 }
 
-/* Floating hearts */
 .heart {
   position: absolute;
   color: rgba(255,0,80,0.7);
@@ -74,8 +73,7 @@ h1 {
   to {transform: translateY(-10vh); opacity: 0;}
 }
 
-/* Play button styling */
-button {
+#playButton {
   margin-top: 15px;
   padding: 10px 20px;
   border-radius: 12px;
@@ -98,15 +96,15 @@ button {
   <!-- Slideshow -->
   <div class="slideshow">
     <img src="0B0A9217.JPG" class="active">
-    <!-- Add more images here -->
+    <!-- add more images here -->
   </div>
 
   <!-- Play Music Button -->
-  <button onclick="playMusic()">🎵 Play Music</button>
+  <button id="playButton">🎵 Play Music</button>
 
   <!-- Audio element -->
   <audio id="bgMusic" loop>
-    <source src="Nuvvunte Chaley - Lyrical Andhra King Taluka Ram Pothineni Bhagyashri Borse Mahesh Babu P.mp3" type="audio/mpeg">
+    <source src="NuvvunteChaley.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </div>
@@ -133,11 +131,23 @@ function createHeart() {
 }
 setInterval(createHeart, 400);
 
-/* Play music function */
-function playMusic() {
-  const audio = document.getElementById("bgMusic");
+/* Play music */
+const audio = document.getElementById("bgMusic");
+const button = document.getElementById("playButton");
+
+// Button click starts music
+button.addEventListener("click", () => {
   audio.play();
-}
+  button.style.display = "none"; // hide button
+});
+
+// First click anywhere on page also starts music
+document.body.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    button.style.display = "none";
+  }
+}, { once: true });
 </script>
 
 </body>
