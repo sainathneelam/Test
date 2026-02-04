@@ -51,6 +51,20 @@ h1 {
   display: block;
 }
 
+button#playMusic {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button#playMusic:hover {
+  background-color: #d62839;
+}
+
 @keyframes fadeIn {
   from {opacity: 0; transform: scale(0.9);}
   to {opacity: 1; transform: scale(1);}
@@ -73,30 +87,32 @@ h1 {
 
 <body>
 
-<!-- 🎵 YouTube Background Music -->
-<iframe width="0" height="0" src="https://youtu.be/s9NBDKfVg1c?si=Ih6zK9LaWYMcgeVF" 
-frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
 <div class="card">
-
-  <!-- 📸 SLIDESHOW IMAGES -->
-  <div class="slideshow">
-    <img src="https://drive.google.com/file/d/1niGOgnRaHe3BmXjGX6Wgnzu6Ov4mosVu/view?usp=sharing" class="active">
-    <img src="https://drive.google.com/uc?export=view&id=FILE_ID_2">
-    <img src="https://drive.google.com/uc?export=view&id=FILE_ID_3">
-    <!-- add more <img> lines if needed -->
-  </div>
-
-  <h1>I love you bujjulu. Be my valentine ❤️</h1>
+  <h1>I love you bujjulu ❤️</h1>
   <p>Forever & always</p>
   <p>— Sainath</p>
+
+  <!-- Play music button -->
+  <button id="playMusic">🎵 Play Music</button>
+
+  <!-- Slideshow -->
+  <div class="slideshow">
+    <img src="images/photo1.jpg" class="active">
+    <img src="images/photo2.jpg">
+    <img src="images/photo3.jpg">
+    <!-- Add more images if you want -->
+  </div>
 </div>
+
+<!-- YouTube Music iframe (hidden, plays when button clicked) -->
+<iframe id="musicFrame" width="0" height="0"
+src="https://youtu.be/s9NBDKfVg1c?si=Ih6zK9LaWYMcgeVF"
+frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
 
 <script>
 /* Slideshow */
 let slides = document.querySelectorAll(".slideshow img");
 let index = 0;
-
 setInterval(() => {
   slides[index].classList.remove("active");
   index = (index + 1) % slides.length;
@@ -114,8 +130,12 @@ function createHeart() {
 
   setTimeout(() => heart.remove(), 6000);
 }
-
 setInterval(createHeart, 400);
+
+/* Play YouTube music when button clicked */
+document.getElementById("playMusic").addEventListener("click", () => {
+  document.getElementById("musicFrame").style.display = "block";
+});
 </script>
 
 </body>
