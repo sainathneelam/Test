@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>For You ❤️</title>
-
 <style>
 body {
   margin: 0;
@@ -24,14 +23,10 @@ body {
   text-align: center;
   width: 340px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  z-index: 2;
   animation: fadeIn 2s ease;
 }
 
-h1 {
-  color: #e63946;
-  margin: 10px 0;
-}
+h1 { color: #e63946; margin: 10px 0; }
 
 .slideshow {
   width: 100%;
@@ -52,9 +47,7 @@ h1 {
   display: none;
 }
 
-.slideshow img.active {
-  display: block;
-}
+.slideshow img.active { display: block; }
 
 @keyframes fadeIn {
   from {opacity: 0; transform: scale(0.9);}
@@ -72,17 +65,6 @@ h1 {
   from {transform: translateY(100vh); opacity: 1;}
   to {transform: translateY(-10vh); opacity: 0;}
 }
-
-#playButton {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border-radius: 12px;
-  border: none;
-  background: #e63946;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
 </style>
 </head>
 
@@ -96,18 +78,15 @@ h1 {
   <!-- Slideshow -->
   <div class="slideshow">
     <img src="0B0A9217.JPG" class="active">
-    <!-- add more images here -->
+    <!-- Add more images if needed -->
   </div>
-
-  <!-- Play Music Button -->
-  <button id="playButton">🎵 Play Music</button>
-
-  <!-- Audio element -->
-  <audio id="bgMusic" loop>
-    <source src="NuvvunteChaley.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 </div>
+
+<!-- Audio -->
+<audio id="bgMusic" loop>
+  <source src="NuvvunteChaley.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 <script>
 /* Slideshow */
@@ -131,23 +110,13 @@ function createHeart() {
 }
 setInterval(createHeart, 400);
 
-/* Play music */
+/* Music plays on first click anywhere */
 const audio = document.getElementById("bgMusic");
-const button = document.getElementById("playButton");
-
-// Button click starts music
-button.addEventListener("click", () => {
-  audio.play();
-  button.style.display = "none"; // hide button
-});
-
-// First click anywhere on page also starts music
 document.body.addEventListener("click", () => {
   if (audio.paused) {
     audio.play();
-    button.style.display = "none";
   }
-}, { once: true });
+}, { once: true }); // triggers only once
 </script>
 
 </body>
