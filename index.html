@@ -30,7 +30,7 @@ h1 { color: #e63946; margin: 10px 0; }
 
 .slideshow {
   width: 100%;
-  height: 200px;
+  height: 220px;
   border-radius: 15px;
   overflow: hidden;
   margin-top: 15px;
@@ -43,7 +43,7 @@ h1 { color: #e63946; margin: 10px 0; }
 .slideshow img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* ensures face is not cut off */
   display: none;
 }
 
@@ -78,7 +78,7 @@ h1 { color: #e63946; margin: 10px 0; }
   <!-- Slideshow -->
   <div class="slideshow">
     <img src="0B0A9217.JPG" class="active">
-    <!-- Add more images if needed -->
+    <!-- Add more images here -->
   </div>
 </div>
 
@@ -113,9 +113,7 @@ setInterval(createHeart, 400);
 /* Music plays on first click anywhere */
 const audio = document.getElementById("bgMusic");
 document.body.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play();
-  }
+    audio.play().catch(err => console.log(err));
 }, { once: true }); // triggers only once
 </script>
 
