@@ -21,7 +21,7 @@ body {
   padding: 25px;
   border-radius: 20px;
   text-align: center;
-  width: 320px;
+  width: 340px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   z-index: 2;
   animation: fadeIn 2s ease;
@@ -51,21 +51,6 @@ h1 {
   display: block;
 }
 
-button#playMusic {
-  background-color: #e63946;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-button#playMusic:hover {
-  background-color: #d62839;
-}
-
 @keyframes fadeIn {
   from {opacity: 0; transform: scale(0.9);}
   to {opacity: 1; transform: scale(1);}
@@ -88,14 +73,6 @@ button#playMusic:hover {
 
 <body>
 
-<!-- Play Music Button -->
-<button id="playMusic">🎵 Play Music</button>
-
-<!-- Hidden YouTube iframe for audio only -->
-<iframe id="musicFrame" width="0" height="0"
-src="https://www.youtube.com/embed/s9NBDKfVg1c?autoplay=1&loop=1&playlist=s9NBDKfVg1c&controls=0&modestbranding=1"
-frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
-
 <div class="card">
   <h1>I love you bujjulu ❤️</h1>
   <p>Forever & always</p>
@@ -108,6 +85,12 @@ frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display
     <img src="images/photo3.jpg">
     <!-- Add more images here -->
   </div>
+
+  <!-- YouTube video player -->
+  <iframe width="320" height="180" 
+          src="https://www.youtube.com/embed/s9NBDKfVg1c?autoplay=0&loop=1&playlist=s9NBDKfVg1c" 
+          title="Love Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </iframe>
 </div>
 
 <script>
@@ -131,12 +114,6 @@ function createHeart() {
   setTimeout(() => heart.remove(), 6000);
 }
 setInterval(createHeart, 400);
-
-/* Play YouTube music when button clicked */
-document.getElementById("playMusic").addEventListener("click", () => {
-  document.getElementById("musicFrame").style.display = "block"; // start music
-  document.getElementById("playMusic").style.display = "none";   // hide button
-});
 </script>
 
 </body>
